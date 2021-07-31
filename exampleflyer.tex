@@ -1,0 +1,86 @@
+% =================================================================
+% Flyer base file for academic presentations
+%
+% fyler.tex
+%
+% This file is to be used as a base to create advertising flyers
+% for academic presentations
+% 
+% Author:
+% Michel Tosin
+% michel.a.t.c.137@gmail.com
+
+% last update: Jul 31, 2021
+% =================================================================
+
+\documentclass{beamer}
+\usetheme{UERJflyer}
+
+% ----------------------------------------------------------
+% Main colors and logo
+% ----------------------------------------------------------
+%\colorlet{color_1}{uerj_blue}   % head/foot main color
+							     % defaut: UERj blue
+
+\logo{uerj_logo.png}{ccomp_logo.png} % Two logos option
+%\logo{uerj_logo.png}{}          % One logo option
+% ----------------------------------------------------------
+
+% ==========================================================
+\begin{document}
+% ==========================================================
+
+% ----------------------------------------------------------
+% Flyer
+% ----------------------------------------------------------
+
+\begin{frame}
+
+\begin{center}
+{\huge \textcolor{red}{\textbf{Dissertation defense}}} \\
+\end{center}
+\vspace{3mm}
+
+\begin{columns}
+\begin{column}{0.65\linewidth}
+\begin{center}
+
+\textbf{The amazing \\ 
+presentation title} \\
+\vspace{2mm} 
+by\\ 
+\textbf{Great speaker} \\
+\vspace{2mm}
+Advisor: \textbf{Great professor 1} ~~~~~~~~~\\
+Co-orientador: \textbf{Great professor 2}  \\
+\vspace{5mm}
+
+\textcolor{purple}{\textbf{Month day, hour}} \\
+\textcolor{purple}{\textbf{Location: {\scriptsize \url{https://presentationlink.com}}}}
+
+\end{center}
+\end{column}
+%
+\begin{column}{0.35\linewidth}
+\begin{center}
+\begin{tikzpicture}
+\clip (0,0) circle (1.25cm) node {\includegraphics[width=2.5cm]{Tosin.jpg}};
+\end{tikzpicture}
+
+\vspace{10mm}
+\begin{tikzpicture}
+\draw[line width=2] (0.75,0.75) rectangle (-0.75,-0.75);
+\draw (0,0) node {\includegraphics[width=1.5cm]{qr_code.png}};
+\end{tikzpicture}
+\end{center}
+\end{column}
+
+\end{columns} 
+
+\end{frame}
+% ----------------------------------------------------------
+
+
+% ==========================================================
+\end{document}
+% ==========================================================
