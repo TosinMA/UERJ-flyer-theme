@@ -1,0 +1,117 @@
+% =================================================================
+% LaTeX flyer beamer theme file with Tosin's layout
+%
+% beamerthemeUERJflyer.sty
+%
+% This file is to be used as a base to create advertising flyers
+% for academic presentations
+% 
+% Author:
+% Michel Tosin
+% michel.a.t.c.137@gmail.com
+
+% last update: Jul 31, 2021
+% =================================================================
+
+\RequirePackage{ifthen}
+\RequirePackage[scaled=.75]{helvet}
+\RequirePackage{color,tikz}
+
+\mode<presentation>
+
+% changing margins in a beamer frame
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% empty checking command 
+\newcommand{\ifnotempty}[2]
+	{
+		\ifthenelse{\not\equal{#1}{}}
+		{#2}
+		{}
+	} 
+
+% logo command
+\renewcommand{\logo}[2] {%      % variable for logo image
+  \newcommand{\logofile}{#1}
+  \ifnotempty{#2}{\newcommand{\logoFile}{#2}}
+  }
+
+% logo width variable
+\newlength{\picwidth}
+
+% =======================================================================================
+% Color theme
+% =======================================================================================
+% color checking command
+\newcommand{\colorprovide}[2]{%
+  \@ifundefined{\string\color@#1}{\colorlet{#1}{#2}}{}}
+
+% UERJ colors
+\definecolor{uerj_blue}{rgb}{0, 0.45, 0.81}     
+\definecolor{uerj_gold}{rgb}{0.68, 0.52, 0.12} 
+\definecolor{uerj_red}{rgb}{0.97, 0.26, 0.23}     
+
+\colorprovide{color_1}{uerj_blue}
+\setbeamercolor{background canvas}{bg=color_1!10}
+% =======================================================================================
+
+
+% =======================================================================================
+% Flyer customizations
+% =======================================================================================
+
+% ---------------------------------------------------------------------------------------
+% Header
+% ---------------------------------------------------------------------------------------
+\setbeamertemplate{headline} {
+      \leavevmode  
+      \settowidth{\picwidth}{\includegraphics[height=1.6cm]{\logofile}}
+      
+	\begin{beamercolorbox}[wd=\paperwidth, ht=10mm]{}
+		\begin{tikzpicture}[remember picture, overlay]
+       		\fill[line width=0.15,color=color_1] (0,-0.5) rectangle (\linewidth,0.7);
+       		\hspace{2.5mm}
+       		\draw[line width=0.25,rounded corners=3,fill=white] 
+			(0,-0.8) rectangle (1.1\picwidth,0.9975);
+			\draw (0.55\picwidth,0.1) node {\includegraphics[height=1.6cm]{\logofile}};
+			
+			\ifdefined\logoFile
+
+				\settowidth{\picwidth}{\includegraphics[height=1.6cm]{\logoFile}}
+			    \hspace{-5mm}
+				\draw[line width=0.25,rounded corners=3,fill=white] 
+				(\linewidth-1.1\picwidth,-0.8) rectangle (\linewidth,0.9975);
+				\draw (\linewidth-0.55\picwidth,0.1) node {\includegraphics[height=1.6cm]{\logoFile}};	
+			
+			\fi
+			
+        \end{tikzpicture}
+    \end{beamercolorbox} 
+    \vspace{10mm}
+}
+% ---------------------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------------------
+% Footer
+% ---------------------------------------------------------------------------------------
+\setbeamertemplate{footline}{
+  \leavevmode 
+	\begin{beamercolorbox}[wd=\paperwidth, ht=10mm]{}
+		\begin{tikzpicture}[remember picture, overlay]
+       		\fill[line width=0.15,color=color_1] (0,0) rectangle (\linewidth,0.4);
+       		%\fill[line width=0.15,color=color_2] (0.25\linewidth,0) rectangle (0.75\linewidth,0.4);
+			%\node at (0.125\linewidth,0.2) {\footnotesize \textbf{\insertshortauthor}};
+			%\node at (0.5\linewidth,0.2) {\footnotesize \textbf{\insertshorttitle}};
+			%\node at (0.875\linewidth,0.2) {\footnotesize {\sf \textbf{\insertshortinstitute ~~~ 													\insertframenumber~/~\inserttotalframenumber}}};
+        \end{tikzpicture}
+    \end{beamercolorbox} 
+} 
+
+% disable navigation symbols
+\setbeamertemplate{navigation symbols}{}
+% ---------------------------------------------------------------------------------------
+
+% =======================================================================================
+
+\mode
+<all>
